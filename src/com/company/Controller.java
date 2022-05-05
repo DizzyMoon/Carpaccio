@@ -41,6 +41,14 @@ public class Controller {
     return tax;
 
   }
+  public void test(Order order){
+    double orderValue = order.getAmount() + order.getPrice();
+    double tax = orderValue*calculateTax(order);
+    double discount = orderValue*calculateDiscount(order);
+
+    double sum = orderValue-tax-discount;
+
+  }
 public void displayTax(Order order){
   System.out.println(calculateTax(order));
 }
