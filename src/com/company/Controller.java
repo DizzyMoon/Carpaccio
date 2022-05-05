@@ -6,14 +6,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Controller {
-
-  public void run(){
-    boolean running = true;
-    while (running){
   private ArrayList<Order> orderList = new ArrayList<Order>();
   private boolean running = true;
   private Scanner sc = new Scanner(System.in);
-
+  
 
   public void run() {
 
@@ -26,8 +22,6 @@ public class Controller {
         case 2 -> displayOrderList();
         case 4 -> exit();
       }
-
-
     }
   }
   public double orderDiscount(String state){
