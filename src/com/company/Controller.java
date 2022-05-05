@@ -54,6 +54,7 @@ public double calculateDiscount(Order order){
     } else if (7000 <= orderValue && orderValue < 10000){
       discount = 7;
     }
+
     return discount;
 }
 
