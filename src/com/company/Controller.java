@@ -7,13 +7,14 @@ import java.util.Scanner;
 
 public class Controller {
   private ArrayList<Order> orderList = new ArrayList<Order>();
-  private boolean running = true;
   private Scanner sc = new Scanner(System.in);
-  
+  private boolean running;
 
   public void run() {
+    running = true;
 
-    while (running) {
+    while (this.running) {
+      displayMenu();
       int input = sc.nextInt();
       sc.nextLine();
 
@@ -56,14 +57,18 @@ public double calculateDiscount(Order order){
     }
 
     return discount;
-}
 
+  }
 
-  private void addOrder(){
+  private void addOrder() {
+
+    System.out.print("Type amount: ");
     int amount = sc.nextInt();
     sc.nextLine();
+    System.out.print("Type price: ");
     double price = sc.nextDouble();
     sc.nextLine();
+    System.out.print("Type state: ");
     String state = sc.nextLine();
 
     addToOrderList(amount, price, state);
@@ -73,13 +78,29 @@ public double calculateDiscount(Order order){
     orderList.add(new Order(amount, price, state));
   }
 
-  public void displayOrderList(){
-    for (Order order : orderList){
-      System.out.println(order);
+  public void displayMenu() {
+    System.out.print("""
+        ----------MENU--------------
+        1 - Add new Order
+        2 - Display Orders
+        3 - Exit
+                
+        input: """);
+
+  }
+
+  public void displayOrderList() {
+    double priceSum = 0;
+    int counter = 0;
+    for (Order order : orderList) {
+      priceSum = priceSum + order.getPrice() * order.getAmount();
+      System.out.println("Order nr. " + counter + " - " + order);
+      counter++;
     }
+    System.out.println("TOTAL PRICE - " + priceSum);
   }
 
   private void exit() {
-    running = false;
+    this.running = false;
   }
 }
