@@ -22,4 +22,8 @@ public class Order {
   public String getState(){
     return state;
   }
+
+  public String toString(){
+    return amount + ", " + price + ", " + state;
+  }
 }
