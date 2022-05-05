@@ -23,6 +23,18 @@ public class Order {
     return state;
   }
 
+  public void setAmount(int amount){
+    this.amount = amount;
+  }
+
+  public void setPrice(double price){
+    this.price = price;
+  }
+
+  public void setState(String state){
+    this.state = state;
+  }
+
   public String toString(){
     return amount + ", " + price + ", " + state;
   }

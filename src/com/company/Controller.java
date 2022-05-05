@@ -100,8 +100,15 @@ public double calculateDiscount(Order order){
   public void displayOrderList() {
     double priceSum = 0;
     int counter = 0;
+    double discountedPrice;
+    double taxedPrice;
     for (Order order : orderList) {
+      discountedPrice = calculateDiscount(order);
+      order.setPrice(discountedPrice);
+      taxedPrice = calculateTax(order);
+      order.setPrice(taxedPrice);
       priceSum = priceSum + order.getPrice() * order.getAmount();
+
       System.out.println("Order nr. " + counter + " - " + order);
       counter++;
     }
