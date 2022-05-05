@@ -10,7 +10,7 @@ public class Controller {
 
     }
   }
-  public double orderDicount(String state){
+  public double orderDiscount(String state){
     state = state.toUpperCase(Locale.ROOT);
     double discount = 0;
 
