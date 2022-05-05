@@ -24,21 +24,39 @@ public class Controller {
       }
     }
   }
-  public double orderDiscount(String state){
+  public double calculateTax(Order order){
+    String state = order.getState();
+
     state = state.toUpperCase(Locale.ROOT);
-    double discount = 0;
+    double tax = 0;
 
     switch (state){
-      case "UT" ->	discount = 6.85;
-      case "NV" ->  discount = 8.00;
-      case "TX" ->  discount = 6.25;
-      case "AL" ->  discount = 4.00;
-      case "CA"	->  discount = 8.25;
+      case "UT" ->	tax = 6.85;
+      case "NV" ->  tax = 8.00;
+      case "TX" ->  tax = 6.25;
+      case "AL" ->  tax = 4.00;
+      case "CA"	->  tax = 8.25;
     }
-    System.out.println(discount);
-    return discount;
+    return tax;
 
   }
+public void displayTax(Order order){
+  System.out.println(calculateTax(order));
+}
+public double calculateDiscount(Order order){
+    double discount = 0;
+    double orderValue = order.getAmount() + order.getPrice();
+
+    if (1000 <= orderValue && orderValue < 5000){
+      discount = 3;
+    } else if (5000 <= orderValue && orderValue < 7000){
+      discount = 5;
+    } else if (7000 <= orderValue && orderValue < 10000){
+      discount = 7;
+    }
+    return discount;
+}
+
 
   private void addOrder(){
     int amount = sc.nextInt();
